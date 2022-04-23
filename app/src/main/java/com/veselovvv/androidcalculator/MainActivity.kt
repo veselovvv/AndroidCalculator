@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     // Обнуляет строку с выражением и результатом:
     private fun clearAll() {
         expressionEditText.setText("")
-        resultTextView.text = ""
+        resultTextView.text = getString(R.string.result)
     }
 
     // Считывает выражение и выводит результат:
