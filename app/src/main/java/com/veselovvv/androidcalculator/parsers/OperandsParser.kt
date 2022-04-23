@@ -25,7 +25,6 @@ interface OperandsParser {
                     indexOperand++
                 }
             }
-
             return operandsArray
         }
 

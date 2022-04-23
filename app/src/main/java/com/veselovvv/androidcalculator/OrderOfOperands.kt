@@ -22,7 +22,6 @@ interface OrderOfOperands {
                     indexOrder++
                 }
             }
-
             return order
         }
     }

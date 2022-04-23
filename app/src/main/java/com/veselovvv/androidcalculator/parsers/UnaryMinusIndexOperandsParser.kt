@@ -12,19 +12,16 @@ interface UnaryMinusIndexOperandsParser {
         ): Array<Int> {
             var tempIndexOperands = indexOperands
 
-            if (operands[0] == "-" && indexOperands[0] == 0) {
+            if (operands[0] == "-" && indexOperands[0] == 0)
                 tempIndexOperands = itemArrayRemover.removeItemArrayInt(tempIndexOperands, 0)
-            }
 
             indexOperands.forEachIndexed { index, element ->
                 if (index <= indexOperands.lastIndex - 1) {
-                    if (indexOperands[index + 1] - element == 1 && (operands[index + 1] == "-")) {
+                    if (indexOperands[index + 1] - element == 1 && (operands[index + 1] == "-"))
                         tempIndexOperands =
                             itemArrayRemover.removeItemArrayInt(tempIndexOperands, index + 1)
-                    }
                 }
             }
-
             return tempIndexOperands
         }
     }

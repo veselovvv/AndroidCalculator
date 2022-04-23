@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">AndroidCalculator</string>
-
     <string name="entrance_edit_text">Enter an expression</string>
     <string name="result">Result</string>
     <string name="fill_field_message">Please fill the field!</string>

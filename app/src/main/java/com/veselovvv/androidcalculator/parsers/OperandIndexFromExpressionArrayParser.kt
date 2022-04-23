@@ -17,7 +17,6 @@ interface OperandIndexFromExpressionArrayParser {
                     indexOperand++
                 }
             }
-
             return operandIndexArray
         }
     }

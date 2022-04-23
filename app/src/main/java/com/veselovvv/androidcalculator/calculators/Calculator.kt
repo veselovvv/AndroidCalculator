@@ -36,7 +36,6 @@ interface Calculator {
                     if (element > orderOperands[indexOrder]) orderOperands[index]--
                 }
             }
-
             return tempVarArray[0].toString()
         }
 

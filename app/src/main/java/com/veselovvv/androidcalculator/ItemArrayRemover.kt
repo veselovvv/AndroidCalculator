@@ -13,7 +13,6 @@ interface ItemArrayRemover {
                 if (index >= indexRemove) resultArray[index] = inputArray[index + 1]
                 else resultArray[index] = inputArray[index]
             }
-
             return resultArray
         }
 
@@ -25,7 +24,6 @@ interface ItemArrayRemover {
                 if (index >= indexRemove) resultArray[index] = inputArray[index + 1]
                 else resultArray[index] = inputArray[index]
             }
-
             return resultArray
         }
     }

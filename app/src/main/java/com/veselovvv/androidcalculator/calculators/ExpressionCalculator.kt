@@ -36,7 +36,6 @@ interface ExpressionCalculator {
 
             val variablesArray = variablesArrayParser.parseVariablesArray(expression, indexOperandsArray)
             val orderOperandsArray = orderOfOperands.orderOfOperands(operandsArray)
-
             return calculator.calculate(variablesArray, operandsArray, orderOperandsArray)
         }
     }

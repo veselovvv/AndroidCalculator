@@ -6,22 +6,10 @@ import android.widget.Toast
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
-import com.veselovvv.androidcalculator.calculators.Calculator
 import com.veselovvv.androidcalculator.calculators.ExpressionCalculator
-import com.veselovvv.androidcalculator.parsers.*
 
 class MainActivity : AppCompatActivity() {
-    private val itemArrayRemover = ItemArrayRemover.Base()
-    private val expressionCalculator = ExpressionCalculator.Base(
-        OperandsParser.Base(),
-        OperandIndexFromExpressionArrayParser.Base(),
-        UnaryMinusOperandsParser.Base(itemArrayRemover),
-        UnaryMinusIndexOperandsParser.Base(itemArrayRemover),
-        VariablesArrayParser.Base(),
-        OrderOfOperands.Base(),
-        Calculator.Base(itemArrayRemover)
-    )
-
+    private lateinit var expressionCalculator: ExpressionCalculator
     private lateinit var expressionEditText: TextInputEditText
     private lateinit var resultTextView: MaterialTextView
     private lateinit var clearButton: MaterialButton
@@ -31,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        expressionCalculator = (application as CalculatorApp).expressionCalculator
         expressionEditText = findViewById(R.id.expression_edit_text)
         resultTextView = findViewById(R.id.result_text_view)
         clearButton = findViewById(R.id.clear_button)
