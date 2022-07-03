@@ -1,8 +1,8 @@
 package com.veselovvv.androidcalculator
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textview.MaterialTextView
@@ -12,8 +12,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var expressionCalculator: ExpressionCalculator
     private lateinit var expressionEditText: TextInputEditText
     private lateinit var resultTextView: MaterialTextView
-    private lateinit var clearButton: MaterialButton
-    private lateinit var resultButton: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +20,9 @@ class MainActivity : AppCompatActivity() {
         expressionCalculator = (application as CalculatorApp).expressionCalculator
         expressionEditText = findViewById(R.id.expression_edit_text)
         resultTextView = findViewById(R.id.result_text_view)
-        clearButton = findViewById(R.id.clear_button)
-        resultButton = findViewById(R.id.result_button)
 
-        clearButton.setOnClickListener { clearAll() }
-        resultButton.setOnClickListener { showResult() }
+        findViewById<MaterialButton>(R.id.clear_button).setOnClickListener { clearAll() }
+        findViewById<MaterialButton>(R.id.result_button).setOnClickListener { showResult() }
     }
 
     // Обнуляет строку с выражением и результатом:
@@ -46,8 +42,6 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_LONG).show()
             }
-        } else {
-            expressionEditText.error = getString(R.string.fill_field_message)
-        }
+        } else expressionEditText.error = getString(R.string.fill_field_message)
     }
 }
