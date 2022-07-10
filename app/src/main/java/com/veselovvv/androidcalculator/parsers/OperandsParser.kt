@@ -1,12 +1,12 @@
 package com.veselovvv.androidcalculator.parsers
 
 interface OperandsParser {
-    fun parseOperands(expression: String): Array<String>
+    fun parse(expression: String): Array<String>
     fun isOperand(element: Char): Boolean
 
     class Base : OperandsParser {
         // Находит операнды в строке:
-        override fun parseOperands(expression: String): Array<String> {
+        override fun parse(expression: String): Array<String> {
             var indexOperand = 0
             var countOperand = 0
 

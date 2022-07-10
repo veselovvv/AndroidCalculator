@@ -1,11 +1,11 @@
 package com.veselovvv.androidcalculator.parsers
 
 interface OperandIndexFromExpressionArrayParser {
-    fun parseOperandIndexFromExpressionArray(expression: String, operands: Array<String>): Array<Int>
+    fun parse(expression: String, operands: Array<String>): Array<Int>
 
     class Base : OperandIndexFromExpressionArrayParser {
         // Возвращает массив индексов операндов в выражении:
-        override fun parseOperandIndexFromExpressionArray(
+        override fun parse(
             expression: String, operands: Array<String>
         ): Array<Int> {
             var indexOperand = 0

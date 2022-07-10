@@ -6,7 +6,10 @@ interface Calculator {
     fun calculate(variables: Array<Int>, operands: Array<String>, orderOperands: Array<Int>): String
     fun operationVariables(var1: Int, var2: Int, operand: String): Int
 
-    class Base(private val itemArrayRemover: ItemArrayRemover) : Calculator {
+    class Base(
+        private val intItemArrayRemover: ItemArrayRemover<Int>,
+        private val stringItemArrayRemover: ItemArrayRemover<String>
+    ) : Calculator {
         // Вычисляет по приоритетам операций, перебирая массивы элементов:
         override fun calculate(
             variables: Array<Int>, operands: Array<String>, orderOperands: Array<Int>
@@ -26,11 +29,10 @@ interface Calculator {
                 )
 
                 // Удаление след. элемента из массива со смещением:
-                tempVarArray = itemArrayRemover.removeItemArrayInt(tempVarArray, indexVar + 1)
+                tempVarArray = intItemArrayRemover.remove(tempVarArray, indexVar + 1)
 
                 // Удаление операции из массива очереди операций со смещением:
-                tempOperands =
-                    itemArrayRemover.removeItemArrayString(tempOperands, orderOperands[indexOrder])
+                tempOperands = stringItemArrayRemover.remove(tempOperands, orderOperands[indexOrder])
 
                 orderOperands.forEachIndexed { index, element ->
                     if (element > orderOperands[indexOrder]) orderOperands[index]--

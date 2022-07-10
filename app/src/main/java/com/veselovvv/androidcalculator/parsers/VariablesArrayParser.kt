@@ -1,11 +1,11 @@
 package com.veselovvv.androidcalculator.parsers
 
 interface VariablesArrayParser {
-    fun parseVariablesArray(expression: String, operandsIndex: Array<Int>): Array<Int>
+    fun parse(expression: String, operandsIndex: Array<Int>): Array<Int>
 
     class Base : VariablesArrayParser {
         // Разбивает выражение на переменные:
-        override fun parseVariablesArray(expression: String, operandsIndex: Array<Int>): Array<Int> {
+        override fun parse(expression: String, operandsIndex: Array<Int>): Array<Int> {
             val variablesStr = Array(operandsIndex.size + 1){""}
             val variablesInt = Array(operandsIndex.size + 1){0}
             var indexOperands = 0   // индекс массива индексов операндов
