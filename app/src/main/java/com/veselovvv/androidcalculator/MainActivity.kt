@@ -21,27 +21,24 @@ class MainActivity : AppCompatActivity() {
         expressionEditText = findViewById(R.id.expression_edit_text)
         resultTextView = findViewById(R.id.result_text_view)
 
-        findViewById<MaterialButton>(R.id.clear_button).setOnClickListener { clearAll() }
-        findViewById<MaterialButton>(R.id.result_button).setOnClickListener { showResult() }
-    }
+        findViewById<MaterialButton>(R.id.clear_button).setOnClickListener {
+            // Обнуляет строку с выражением и результатом:
+            expressionEditText.setText("")
+            resultTextView.text = getString(R.string.result)
+        }
 
-    // Обнуляет строку с выражением и результатом:
-    private fun clearAll() {
-        expressionEditText.setText("")
-        resultTextView.text = getString(R.string.result)
-    }
+        findViewById<MaterialButton>(R.id.result_button).setOnClickListener {
+            // Считывает выражение и выводит результат:
+            var expression = expressionEditText.text.toString()
 
-    // Считывает выражение и выводит результат:
-    private fun showResult() {
-        var expression = expressionEditText.text.toString()
-
-        if (expression.isNotEmpty()) {
-            try {
-                expression = expression.replace(" ", "") // удаление пробелов
-                resultTextView.text = expressionCalculator.doExpression(expression) // расчет
-            } catch (e: Exception) {
-                Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_LONG).show()
-            }
-        } else expressionEditText.error = getString(R.string.fill_field_message)
+            if (expression.isNotEmpty()) {
+                try {
+                    expression = expression.replace(" ", "") // удаление пробелов
+                    resultTextView.text = expressionCalculator.doExpression(expression) // расчет
+                } catch (e: Exception) {
+                    Toast.makeText(this, getString(R.string.error_message), Toast.LENGTH_LONG).show()
+                }
+            } else expressionEditText.error = getString(R.string.fill_field_message)
+        }
     }
 }
