@@ -6,8 +6,7 @@ interface ItemArrayRemover<T> {
     abstract class Abstract<T> : ItemArrayRemover<T> {
         protected fun remove(resultArray: Array<T>, inputArray: Array<T>, indexRemove: Int): Array<T> {
             resultArray.forEachIndexed { index, _ ->
-                if (index >= indexRemove) resultArray[index] = inputArray[index + 1]
-                else resultArray[index] = inputArray[index]
+                resultArray[index] = if (index >= indexRemove) inputArray[index + 1] else inputArray[index]
             }
             return resultArray
         }

@@ -3,16 +3,14 @@ package com.veselovvv.androidcalculator.parsers
 interface OperandIndexFromExpressionArrayParser {
     fun parse(expression: String, operands: Array<String>): Array<Int>
 
-    class Base : OperandIndexFromExpressionArrayParser {
+    class Base : OperandIndexFromExpressionArrayParser, OperandParser.Abstract() {
         // Возвращает массив индексов операндов в выражении:
-        override fun parse(
-            expression: String, operands: Array<String>
-        ): Array<Int> {
+        override fun parse(expression: String, operands: Array<String>): Array<Int> {
             var indexOperand = 0
             val operandIndexArray = Array(operands.size){0}
 
             expression.forEachIndexed { index, element ->
-                if ((element == '+') || (element == '-') || (element == '*') || (element == '/')) {
+                if (isOperand(element)) {
                     operandIndexArray[indexOperand] = index
                     indexOperand++
                 }

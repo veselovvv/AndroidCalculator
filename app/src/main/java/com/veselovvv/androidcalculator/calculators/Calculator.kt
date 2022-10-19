@@ -43,11 +43,18 @@ interface Calculator {
 
         // Производит операцию:
         override fun operationVariables(var1: Int, var2: Int, operand: String) = when (operand) {
-            "+" -> var1 + var2
-            "-" -> var1 - var2
-            "*" -> var1 * var2
-            "/" -> (var1 / var2) - (var1 % var2)
+            ADD_OPERAND -> var1 + var2
+            SUBTRACT_OPERAND -> var1 - var2
+            MULTIPLY_OPERAND -> var1 * var2
+            DIVIDE_OPERAND -> (var1 / var2) - (var1 % var2)
             else -> 0
+        }
+
+        companion object {
+            private const val ADD_OPERAND = "+"
+            private const val SUBTRACT_OPERAND = "-"
+            private const val MULTIPLY_OPERAND = "*"
+            private const val DIVIDE_OPERAND = "/"
         }
     }
 }

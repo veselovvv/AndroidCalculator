@@ -2,9 +2,8 @@ package com.veselovvv.androidcalculator.parsers
 
 interface OperandsParser {
     fun parse(expression: String): Array<String>
-    fun isOperand(element: Char): Boolean
 
-    class Base : OperandsParser {
+    class Base : OperandsParser, OperandParser.Abstract() {
         // Находит операнды в строке:
         override fun parse(expression: String): Array<String> {
             var indexOperand = 0
@@ -27,9 +26,5 @@ interface OperandsParser {
             }
             return operandsArray
         }
-
-        // Возвращает true если элемент - операнд:
-        override fun isOperand(element: Char) =
-            (element == '+') || (element == '-') || (element == '*') || (element == '/')
     }
 }

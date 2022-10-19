@@ -23,11 +23,16 @@ interface VariablesArrayParser {
 
             // Перевод всех элементов массива в целочисленный формат:
             variablesStr.forEachIndexed { index, element ->
-                variablesStr[index] = variablesStr[index].replace("(", "")
-                variablesStr[index] = variablesStr[index].replace(")", "")
+                variablesStr[index] = variablesStr[index].replace(OPENED_BRACE, "")
+                variablesStr[index] = variablesStr[index].replace(CLOSED_BRACE, "")
                 variablesInt[index] = element.toInt()
             }
             return variablesInt
+        }
+
+        companion object {
+            private const val OPENED_BRACE = "("
+            private const val CLOSED_BRACE = ")"
         }
     }
 }

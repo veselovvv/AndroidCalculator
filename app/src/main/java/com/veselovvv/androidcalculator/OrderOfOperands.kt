@@ -10,19 +10,26 @@ interface OrderOfOperands {
             var indexOrder = 0
 
             operands.forEachIndexed { index, element ->
-                if (element == "*" || element == "/") {
+                if (element == MULTIPLY_OPERAND || element == DIVIDE_OPERAND) {
                     order[indexOrder] = index
                     indexOrder++
                 }
             }
 
             operands.forEachIndexed { index, element ->
-                if (element == "+" || element == "-") {
+                if (element == ADD_OPERAND || element == SUBTRACT_OPERAND) {
                     order[indexOrder] = index
                     indexOrder++
                 }
             }
             return order
+        }
+
+        companion object {
+            private const val ADD_OPERAND = "+"
+            private const val SUBTRACT_OPERAND = "-"
+            private const val MULTIPLY_OPERAND = "*"
+            private const val DIVIDE_OPERAND = "/"
         }
     }
 }
