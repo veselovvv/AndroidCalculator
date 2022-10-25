@@ -1,6 +1,7 @@
 package com.veselovvv.androidcalculator.calculators
 
 import com.veselovvv.androidcalculator.ItemArrayRemover
+import com.veselovvv.androidcalculator.Operands
 
 interface Calculator {
     fun calculate(variables: Array<Int>, operands: Array<String>, orderOperands: Array<Int>): String
@@ -9,7 +10,7 @@ interface Calculator {
     class Base(
         private val intItemArrayRemover: ItemArrayRemover<Int>,
         private val stringItemArrayRemover: ItemArrayRemover<String>
-    ) : Calculator {
+    ) : Calculator, Operands {
         // Вычисляет по приоритетам операций, перебирая массивы элементов:
         override fun calculate(
             variables: Array<Int>, operands: Array<String>, orderOperands: Array<Int>
@@ -43,18 +44,11 @@ interface Calculator {
 
         // Производит операцию:
         override fun operationVariables(var1: Int, var2: Int, operand: String) = when (operand) {
-            ADD_OPERAND -> var1 + var2
-            SUBTRACT_OPERAND -> var1 - var2
-            MULTIPLY_OPERAND -> var1 * var2
-            DIVIDE_OPERAND -> (var1 / var2) - (var1 % var2)
+            getAddOperand() -> var1 + var2
+            getSubtractOperand() -> var1 - var2
+            getMultiplyOperand() -> var1 * var2
+            getDivideOperand() -> (var1 / var2) - (var1 % var2)
             else -> 0
-        }
-
-        companion object {
-            private const val ADD_OPERAND = "+"
-            private const val SUBTRACT_OPERAND = "-"
-            private const val MULTIPLY_OPERAND = "*"
-            private const val DIVIDE_OPERAND = "/"
         }
     }
 }

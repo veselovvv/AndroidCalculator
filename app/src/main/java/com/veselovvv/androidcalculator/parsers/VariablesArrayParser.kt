@@ -15,7 +15,7 @@ interface VariablesArrayParser {
                 if (index != operandsIndex[indexOperands])
                     variablesStr[indexVar] += element.toString() // переложить в отдельный массив с элементами
 
-                if (index == operandsIndex[indexOperands]) { // если попали на индекс операнда,
+                if (index == operandsIndex[indexOperands]) { // если попали на индекс операнда
                     indexVar++
                     if (indexOperands < operandsIndex.lastIndex) indexOperands++
                 }

@@ -15,7 +15,6 @@ interface ExpressionCalculator {
         private val unaryMinusOperandsParser: UnaryMinusParser<String>,
         private val unaryMinusIndexOperandsParser: UnaryMinusParser<Int>,
         private val variablesArrayParser: VariablesArrayParser,
-        private val orderOfOperands: OrderOfOperands,
         private val calculator: Calculator
     ) : ExpressionCalculator {
         // Парсит строку на переменные и операнды для выполнения операций:
@@ -32,7 +31,7 @@ interface ExpressionCalculator {
             operandsArray = tempOperandsArray
 
             val variablesArray = variablesArrayParser.parse(expression, indexOperandsArray)
-            val orderOperandsArray = orderOfOperands.orderOfOperands(operandsArray)
+            val orderOperandsArray = OrderOfOperands.Base(operandsArray).orderOfOperands()
             return calculator.calculate(variablesArray, operandsArray, orderOperandsArray)
         }
     }

@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        expressionCalculator = (application as CalculatorApp).expressionCalculator
+        expressionCalculator = (application as CalculatorApp).getExpressionCalculator()
         expressionEditText = findViewById(R.id.expression_edit_text)
         resultTextView = findViewById(R.id.result_text_view)
 

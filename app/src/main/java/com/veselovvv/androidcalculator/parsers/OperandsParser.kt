@@ -3,7 +3,7 @@ package com.veselovvv.androidcalculator.parsers
 interface OperandsParser {
     fun parse(expression: String): Array<String>
 
-    class Base : OperandsParser, OperandParser.Abstract() {
+    class Base : OperandsParser, OperandParser {
         // Находит операнды в строке:
         override fun parse(expression: String): Array<String> {
             var indexOperand = 0

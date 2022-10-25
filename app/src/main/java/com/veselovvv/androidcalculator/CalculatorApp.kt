@@ -9,12 +9,13 @@ import com.veselovvv.androidcalculator.parsers.UnaryMinusParser
 import com.veselovvv.androidcalculator.parsers.VariablesArrayParser
 
 class CalculatorApp : Application() {
-    lateinit var expressionCalculator: ExpressionCalculator
+    private lateinit var expressionCalculator: ExpressionCalculator
     private lateinit var intItemArrayRemover: ItemArrayRemover<Int>
     private lateinit var stringItemArrayRemover: ItemArrayRemover<String>
 
     override fun onCreate() {
         super.onCreate()
+
         intItemArrayRemover = ItemArrayRemover.IntItemArrayRemover()
         stringItemArrayRemover = ItemArrayRemover.StringItemArrayRemover()
         expressionCalculator = ExpressionCalculator.Base(
@@ -23,8 +24,9 @@ class CalculatorApp : Application() {
             UnaryMinusParser.UnaryMinusOperandsParser(stringItemArrayRemover),
             UnaryMinusParser.UnaryMinusIndexOperandsParser(intItemArrayRemover),
             VariablesArrayParser.Base(),
-            OrderOfOperands.Base(),
             Calculator.Base(intItemArrayRemover, stringItemArrayRemover)
         )
     }
+
+    fun getExpressionCalculator() = expressionCalculator
 }

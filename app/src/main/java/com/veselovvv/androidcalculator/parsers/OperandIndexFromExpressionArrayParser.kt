@@ -3,7 +3,7 @@ package com.veselovvv.androidcalculator.parsers
 interface OperandIndexFromExpressionArrayParser {
     fun parse(expression: String, operands: Array<String>): Array<Int>
 
-    class Base : OperandIndexFromExpressionArrayParser, OperandParser.Abstract() {
+    class Base : OperandIndexFromExpressionArrayParser, OperandParser {
         // Возвращает массив индексов операндов в выражении:
         override fun parse(expression: String, operands: Array<String>): Array<Int> {
             var indexOperand = 0
