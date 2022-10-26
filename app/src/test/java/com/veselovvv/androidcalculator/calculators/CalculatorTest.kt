@@ -11,6 +11,16 @@ class CalculatorTest {
     )
 
     @Test
+    fun test_calculate() {
+        val actual = calculator.calculate(
+            arrayOf(6, 3, 5, 8, 16),
+            arrayOf("/", "-", "*", "+"),
+            arrayOf(0, 1, 2, 3)
+        )
+        assertEquals("-8", actual)
+    }
+
+    @Test
     fun test_operation_variables_add() {
         var actual = calculator.operationVariables(23, 37, "+")
         assertEquals(60, actual)

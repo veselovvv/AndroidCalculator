@@ -30,7 +30,7 @@ interface UnaryMinusParser<T> {
     class UnaryMinusOperandsParser(
         itemArrayRemover: ItemArrayRemover<String>
     ) : Abstract<String>(itemArrayRemover) {
-        // Проверят на наличие унарного минуса перед переменной и удаляет операнд из массива операндов:
+        // Проверяет на наличие унарного минуса перед переменной и удаляет операнд из массива операндов:
         override fun parse(operands: Array<String>, indexOperands: Array<Int>) =
             parse(operands, indexOperands) { operands }
     }
