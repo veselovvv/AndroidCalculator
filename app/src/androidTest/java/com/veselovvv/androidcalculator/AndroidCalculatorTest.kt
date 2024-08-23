@@ -51,4 +51,62 @@ class AndroidCalculatorTest {
         checkEditTextState(text = "-17+22")
         checkResultTextViewState(text = "5")
     }
+
+    /**
+     * Check initial ui state
+     * 1. Type in edit text "23-37"
+     * Check edit text state with text "23-37"
+     * 2. Recreate activity
+     * Check edit text state with text "23-37"
+     * 3. Click result button
+     * Check edit text state with text "23-37"
+     * Check result text view state with text "-14"
+     * 4. Type in edit text "-17-22"
+     * Check edit text state with text "-17-22"
+     * 5. Recreate activity
+     * Check edit text state with text "-17-22"
+     * 6. Click result button
+     * Check edit text state with text "-17-22"
+     * Check result text view state with text "-39"
+     * 7. Type in edit text "86-34"
+     * Check edit text state with text "86-34"
+     * 8. Recreate activity
+     * Check edit text state with text "86-34"
+     * 9. Click result button
+     * Check edit text state with text "86-34"
+     * Check result text view state with text "52"
+     */
+    @Test
+    fun testSubtract() = with(MainPage()) {
+        checkInitialUiState()
+        typeInEditText(text = "23-37")
+        checkEditTextState(text = "23-37")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "23-37")
+
+        clickResultButton()
+        checkEditTextState(text = "23-37")
+        checkResultTextViewState(text = "-14")
+
+        typeInEditText(text = "-17-22")
+        checkEditTextState(text = "-17-22")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "-17-22")
+
+        clickResultButton()
+        checkEditTextState(text = "-17-22")
+        checkResultTextViewState(text = "-39")
+
+        typeInEditText(text = "86-34")
+        checkEditTextState(text = "86-34")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "86-34")
+
+        clickResultButton()
+        checkEditTextState(text = "86-34")
+        checkResultTextViewState(text = "52")
+    }
 }
