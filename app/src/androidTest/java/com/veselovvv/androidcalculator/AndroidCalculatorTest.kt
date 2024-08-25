@@ -109,4 +109,62 @@ class AndroidCalculatorTest {
         checkEditTextState(text = "86-34")
         checkResultTextViewState(text = "52")
     }
+
+    /**
+     * Check initial ui state
+     * 1. Type in edit text "15*4"
+     * Check edit text state with text "15*4"
+     * 2. Recreate activity
+     * Check edit text state with text "15*4"
+     * 3. Click result button
+     * Check edit text state with text "15*4"
+     * Check result text view state with text "60"
+     * 4. Type in edit text "15*-4"
+     * Check edit text state with text "15*-4"
+     * 5. Recreate activity
+     * Check edit text state with text "15*-4"
+     * 6. Click result button
+     * Check edit text state with text "15*-4"
+     * Check result text view state with text "-60"
+     * 7. Type in edit text "15*0"
+     * Check edit text state with text "15*0"
+     * 8. Recreate activity
+     * Check edit text state with text "15*0"
+     * 9. Click result button
+     * Check edit text state with text "15*0"
+     * Check result text view state with text "0"
+     */
+    @Test
+    fun testMultiply() = with(MainPage()) {
+        checkInitialUiState()
+        typeInEditText(text = "15*4")
+        checkEditTextState(text = "15*4")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "15*4")
+
+        clickResultButton()
+        checkEditTextState(text = "15*4")
+        checkResultTextViewState(text = "60")
+
+        typeInEditText(text = "15*-4")
+        checkEditTextState(text = "15*-4")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "15*-4")
+
+        clickResultButton()
+        checkEditTextState(text = "15*-4")
+        checkResultTextViewState(text = "-60")
+
+        typeInEditText(text = "15*0")
+        checkEditTextState(text = "15*0")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "15*0")
+
+        clickResultButton()
+        checkEditTextState(text = "15*0")
+        checkResultTextViewState(text = "0")
+    }
 }
