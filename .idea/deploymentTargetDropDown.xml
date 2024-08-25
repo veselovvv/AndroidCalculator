@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="deploymentTargetDropDown">
+    <value>
+      <entry key="AndroidCalculatorTest">
+        <State />
+      </entry>
+      <entry key="app">
+        <State />
+      </entry>
+      <entry key="testComplexExpression()">
+        <State />
+      </entry>
+      <entry key="testDivide()">
+        <State />
+      </entry>
+      <entry key="testMultiply()">
+        <State />
+      </entry>
+      <entry key="testSubtract()">
+        <State />
+      </entry>
+    </value>
+  </component>
+</project>

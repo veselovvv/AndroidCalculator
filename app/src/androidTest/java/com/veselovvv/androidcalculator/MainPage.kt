@@ -16,5 +16,6 @@ class MainPage {
     fun typeInEditText(text: String) = editTextStateUi.typeIn(text = text)
     fun checkEditTextState(text: String) = editTextStateUi.checkState(text = text)
     fun clickResultButton() = resultButtonUi.clickButton()
+    fun clickClearButton() = clearButtonUi.clickButton()
     fun checkResultTextViewState(text: String) = resultTextViewUi.checkState(text = text)
 }
