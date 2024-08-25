@@ -208,4 +208,28 @@ class AndroidCalculatorTest {
         checkEditTextState(text = "60/-3")
         checkResultTextViewState(text = "-20")
     }
+
+    /**
+     * Check initial ui state
+     * 1. Type in edit text "6/3-5*8+16"
+     * Check edit text state with text "6/3-5*8+16"
+     * 2. Recreate activity
+     * Check edit text state with text "6/3-5*8+16"
+     * 3. Click result button
+     * Check edit text state with text "6/3-5*8+16"
+     * Check result text view state with text "-22"
+     */
+    @Test
+    fun testComplexExpression() = with(MainPage()) {
+        checkInitialUiState()
+        typeInEditText(text = "6/3-5*8+16")
+        checkEditTextState(text = "6/3-5*8+16")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "6/3-5*8+16")
+
+        clickResultButton()
+        checkEditTextState(text = "6/3-5*8+16")
+        checkResultTextViewState(text = "-22")
+    }
 }
