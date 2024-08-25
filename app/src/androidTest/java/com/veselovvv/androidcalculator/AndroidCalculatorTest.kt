@@ -167,4 +167,45 @@ class AndroidCalculatorTest {
         checkEditTextState(text = "15*0")
         checkResultTextViewState(text = "0")
     }
+
+    /**
+     * Check initial ui state
+     * 1. Type in edit text "60/3"
+     * Check edit text state with text "60/3"
+     * 2. Recreate activity
+     * Check edit text state with text "60/3"
+     * 3. Click result button
+     * Check edit text state with text "60/3"
+     * Check result text view state with text "20"
+     * 4. Type in edit text "60/-3"
+     * Check edit text state with text "60/-3"
+     * 5. Recreate activity
+     * Check edit text state with text "60/-3"
+     * 6. Click result button
+     * Check edit text state with text "60/-3"
+     * Check result text view state with text "-20"
+     */
+    @Test
+    fun testDivide() = with(MainPage()) {
+        checkInitialUiState()
+        typeInEditText(text = "60/3")
+        checkEditTextState(text = "60/3")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "60/3")
+
+        clickResultButton()
+        checkEditTextState(text = "60/3")
+        checkResultTextViewState(text = "20")
+
+        typeInEditText(text = "60/-3")
+        checkEditTextState(text = "60/-3")
+
+        activityScenarioRule.scenario.recreate()
+        checkEditTextState(text = "60/-3")
+
+        clickResultButton()
+        checkEditTextState(text = "60/-3")
+        checkResultTextViewState(text = "-20")
+    }
 }
